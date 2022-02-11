@@ -2,10 +2,17 @@ import java.util.Scanner;
 
 public class Launcher {
     public static void main(String[] args) {
-        System.out.println("bienvenu");
+        boolean continu = true;
         Scanner scan = new Scanner(System.in);
-        String commande = scan.nextLine();
-        if (!commande.equals("quit")) {
-            System.out.println("unknown commande");
-        }
+        do {
+            System.out.println("enter command");
+            String commande = scan.nextLine();
+            if (!commande.equals("quit")) {
+                System.out.println("unknown command");
+            }
+            else{
+                continu = false;
+            }
+        }while(continu);
 }}
+
