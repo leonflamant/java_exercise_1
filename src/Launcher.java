@@ -7,11 +7,11 @@ public class Launcher {
         do {
             System.out.println("enter command");
             String commande = scan.nextLine();
-            if (!commande.equals("quit")) {
-                System.out.println("unknown command");
+            if (commande.equals("quit")) {
+                continu = false;
             }
             else{
-                continu = false;
+                System.out.println("unknown command");
             }
         }while(continu);
 }}
