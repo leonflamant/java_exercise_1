@@ -1,18 +1,32 @@
-import java.util.Scanner;
-
+import java.util.*;
 public class Launcher {
-    public static void main(String[] args) {
-        boolean continu = true;
-        Scanner scan = new Scanner(System.in);
+
+    public static void main(String args[]) {
+        Scanner scanner;
+        scanner = new Scanner(System.in);
+        System.out.println("Hi, welcome to the Jungle");
+        Command cmd = null;
+        List<Command> myCommands = new ArrayList<Command>();
+        myCommands.add(new Quit());
+        myCommands.add(new Fibo());
+        myCommands.add(new Freq());
+        myCommands.add(new Predict());
+
+        String userText = "";
         do {
-            System.out.println("enter command");
-            String commande = scan.nextLine();
-            if (commande.equals("quit")) {
-                continu = false;
+            userText = scanner.nextLine();
+            cmd = null;
+            for (Command command : myCommands) {
+                if (userText.equals(command.name())) {
+                    cmd = command;
+                    break;
+                }
             }
-            else{
-                System.out.println("unknown command");
-            }
-        }while(continu);
-}}
+            if (cmd == null)
+                System.out.println("Unknown Command");
+        }
+        while (cmd == null || !cmd.run(scanner));
+        scanner.close();
+    }}
+
 
